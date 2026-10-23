@@ -1,4 +1,23 @@
 ---
+import Arrow from '../components/Arrow.astro';
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout lang="ro" title="404 · Pagina nu a fost găsită · Erra Restaurant"><section class="container error-page"><p class="eyebrow">404 / O MICĂ RĂTĂCIRE</p><h1>Locul tău e<br/><em>la masa noastră.</em></h1><p>Pagina căutată nu a fost găsită. / This page could not be found.</p><div class="hero-buttons"><a class="button" href="/">Înapoi acasă ↗</a><a class="text-link" href="/en/" lang="en">English home →</a></div></section></Layout>
+
+<Layout noindex={true} lang="ro" title="404 · Pagina nu a fost găsită · Erra Restaurant">
+  <section class="container error-page">
+    <p class="eyebrow">404 / O MICĂ RĂTĂCIRE</p>
+    <h1>
+      Locul tău e<br />
+      <em>la masa noastră.</em>
+    </h1>
+    <p>Pagina căutată nu a fost găsită. / This page could not be found.</p>
+    <div class="hero-buttons">
+      <a class="button" href="/">
+        Înapoi acasă <Arrow />
+      </a>
+      <a class="text-link" href="/en/" lang="en">
+        English home <Arrow direction="right" />
+      </a>
+    </div>
+  </section>
+</Layout>

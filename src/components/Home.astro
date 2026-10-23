@@ -1,27 +1,230 @@
 ---
+import Arrow from './Arrow.astro';
 import menu from '../../data/menu.json';
 import { copy, routes, phoneHref, phone, address, maps, type Lang } from '../site';
-const {lang} = Astro.props as {lang:Lang}; const t=copy[lang]; const ro=lang==='ro';
-const featured = ['Erra','Tagliatele Erra','Tiramisu My Way'].map(name=>menu.find(item=>item.name_ro===name)!);
+const { lang } = Astro.props as { lang: Lang };
+const t = copy[lang];
+const ro = lang === 'ro';
+const featured = ['Erra', 'Tagliatele Erra', 'Tiramisu My Way'].map((name) =>
+  menu.find((item) => item.name_ro === name)!,
+);
 ---
+
 <section class="hero container">
   <div class="hero-copy">
-    <p class="eyebrow"><span class="tiny-line"></span> BUCUREȘTI · BISTRO & PIZZA</p>
-    <h1>{ro?'Un loc bun.':'Good food.'}<br/>{ro?'O masă':'Good'}<br/><em>{ro?'și mai bună.':'company.'}</em></h1>
-    <p class="hero-description">{ro?'Gusturi italienești, spirit de bistro și bucuria de a sta împreună. Bine ai venit la Erra.':'Italian flavours, a bistro spirit, and the pleasure of being together. Welcome to Erra.'}</p>
-    <div class="hero-buttons"><a class="button" href={routes[lang].contact}>{t.reserve} <span aria-hidden="true">↗</span></a><a class="text-link" href={routes[lang].menu}>{ro?'Descoperă meniul':'Discover the menu'} <span aria-hidden="true">→</span></a></div>
-    <div class="hero-footnote"><span class="location-dot" aria-hidden="true"></span>{ro?'Un colț de tihnă în București.':'A little corner of calm in Bucharest.'}</div>
+    <p class="eyebrow">
+      <span class="tiny-line"></span> BUCUREȘTI · BISTRO & PIZZA
+    </p>
+    <h1>
+      {ro ? 'Un loc bun.' : 'Good food.'}
+      <br />
+      {ro ? 'O masă' : 'Good'}
+      <br />
+      <em>{ro ? 'și mai bună.' : 'company.'}</em>
+    </h1>
+    <p class="hero-description">
+      {ro
+        ? 'Gusturi italienești, spirit de bistro și bucuria de a sta împreună. Bine ai venit la Erra.'
+        : 'Italian flavours, a bistro spirit, and the pleasure of being together. Welcome to Erra.'}
+    </p>
+    <div class="hero-buttons">
+      <a class="button" href={routes[lang].contact}>
+        {t.reserve}{' '}
+        <span aria-hidden="true">
+          <Arrow />
+        </span>
+      </a>
+      <a class="text-link" href={routes[lang].menu}>
+        {ro ? 'Descoperă meniul' : 'Discover the menu'}{' '}
+        <span aria-hidden="true">
+          <Arrow direction="right" />
+        </span>
+      </a>
+    </div>
+    <div class="hero-footnote">
+      <span class="location-dot" aria-hidden="true"></span>
+      {ro ? 'Un colț de tihnă în București.' : 'A little corner of calm in Bucharest.'}
+    </div>
   </div>
-  <div class="hero-art"><img src="/images/table.svg" width="660" height="760" alt={ro?'Ilustrație editorială: o farfurie, o ramură de măslin și un pahar, pe o masă verde.':'Editorial illustration: a plate, an olive branch and a glass on an olive-green table.'} fetchpriority="high"/><span class="art-label">LA DOLCE VITA, LA NOI ACASĂ.</span><span class="hero-seal" aria-hidden="true">fatto<br/><i>con amore</i></span></div>
+  <div class="hero-art">
+    <img
+      src="/images/table.svg"
+      width="660"
+      height="760"
+      alt={
+        ro
+          ? 'Ilustrație editorială: o farfurie, o ramură de măslin și un pahar, pe o masă verde.'
+          : 'Editorial illustration: a plate, an olive branch and a glass on an olive-green table.'
+      }
+      fetchpriority="high"
+    />
+    <span class="art-label">LA DOLCE VITA, LA NOI ACASĂ.</span>
+    <span class="hero-seal" aria-hidden="true">
+      fatto
+      <br />
+      <i>con amore</i>
+    </span>
+  </div>
 </section>
-<div class="values-strip"><div class="container"><span>{ro?'Pizza din cuptor pe lemne':'Wood-fired pizza'}</span><span aria-hidden="true">✳</span><span>{ro?'Gusturi italienești':'Italian flavours'}</span><span aria-hidden="true">✳</span><span>{ro?'Spirit de bistro':'Bistro spirit'}</span><span aria-hidden="true">✳</span><span>{ro?'Mese fără grabă':'Unhurried meals'}</span></div></div>
+<div class="values-strip">
+  <div class="container">
+    <span>{ro ? 'Pizza din cuptor pe lemne' : 'Wood-fired pizza'}</span>
+    <span aria-hidden="true">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        class="asterisk"
+        aria-hidden="true"
+      >
+        <path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </span>
+    <span>{ro ? 'Gusturi italienești' : 'Italian flavours'}</span>
+    <span aria-hidden="true">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        class="asterisk"
+        aria-hidden="true"
+      >
+        <path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </span>
+    <span>{ro ? 'Spirit de bistro' : 'Bistro spirit'}</span>
+    <span aria-hidden="true">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        class="asterisk"
+        aria-hidden="true"
+      >
+        <path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </span>
+    <span>{ro ? 'Mese fără grabă' : 'Unhurried meals'}</span>
+  </div>
+</div>
 <section class="section container story-intro">
-  <div><p class="eyebrow">{ro?'01 / POVESTEA NOASTRĂ':'01 / OUR STORY'}</p><h2>{ro?'Cu gust. Cu timp.':'Good food. Good times.'}<br/><em>{ro?'Cu drag.':'Made with care.'}</em></h2></div>
-  <div class="story-body"><p class="lead">{ro?'Credem în mesele care aduc oamenii mai aproape. Într-un aluat bun, un sos cu rost și încă o poveste înainte de desert.':'We believe in meals that bring people closer. In good dough, a sauce with purpose, and one more story before dessert.'}</p><p>{ro?'Sub semnătura Chef Alex Teisanu, meniul reunește pizza din cuptor pe lemne, paste și preparate de bistro. Familiar, dar cu personalitate.':'With a menu by Chef Alex Teisanu, Erra brings together wood-fired pizza, pasta and bistro dishes. Familiar, with a character of its own.'}</p><a class="text-link" href={routes[lang].about}>{ro?'Cunoaște-ne':'Get to know us'} <span aria-hidden="true">↗</span></a></div>
+  <div>
+    <p class="eyebrow">{ro ? '01 / POVESTEA NOASTRĂ' : '01 / OUR STORY'}</p>
+    <h2>
+      {ro ? 'Cu gust. Cu timp.' : 'Good food. Good times.'}
+      <br />
+      <em>{ro ? 'Cu drag.' : 'Made with care.'}</em>
+    </h2>
+  </div>
+  <div class="story-body">
+    <p class="lead">
+      {ro
+        ? 'Credem în mesele care aduc oamenii mai aproape. Într-un aluat bun, un sos cu rost și încă o poveste înainte de desert.'
+        : 'We believe in meals that bring people closer. In good dough, a sauce with purpose, and one more story before dessert.'}
+    </p>
+    <p>
+      {ro
+        ? 'Sub semnătura Chef Alex Teisanu, meniul reunește pizza din cuptor pe lemne, paste și preparate de bistro. Familiar, dar cu personalitate.'
+        : 'With a menu by Chef Alex Teisanu, Erra brings together wood-fired pizza, pasta and bistro dishes. Familiar, with a character of its own.'}
+    </p>
+    <a class="text-link" href={routes[lang].about}>
+      {ro ? 'Cunoaște-ne' : 'Get to know us'}{' '}
+      <span aria-hidden="true">
+        <Arrow />
+      </span>
+    </a>
+  </div>
 </section>
-<section class="featured-section section"><div class="container">
-  <div class="section-heading"><div><p class="eyebrow">{ro?'02 / DIN MENIUL NOSTRU':'02 / FROM OUR MENU'}</p><h2>{ro?'Câteva motive să rămâi.':'A few reasons to stay.'}</h2></div><a class="text-link" href={routes[lang].menu}>{t.fullMenu} <span aria-hidden="true">↗</span></a></div>
-  <p class="archive-note">{t.menuCaveat}</p>
-  <div class="featured-grid">{featured.map((item,index)=><article class="featured-card"><div class="dish-symbol" aria-hidden="true">{index===0?'◉':index===1?'≋':'◒'}</div><div class="dish-category"><span>{index===0?'PIZZA':index===1?(ro?'PASTE':'PASTA'):(ro?'DESERT':'DESSERT')}</span><span>0{index+1}</span></div><h3>{ro?item.name_ro:item.name_en}</h3><p>{(ro?item.description_ro:item.description_en)||(ro?'Un final dulce, în stilul nostru.':'A sweet ending, our way.')}</p><div class="dish-card-bottom"><span>{item.price} lei</span><a href={`${routes[lang].menu}#${item.category}`} aria-label={`${ro?'Vezi':'View'} ${ro?item.name_ro:item.name_en}`}><span aria-hidden="true">↗</span></a></div></article>)}</div>
-</div></section>
-<section class="section container visit-teaser"><div><p class="eyebrow">{ro?'03 / NE VEDEM LA ERRA':'03 / MEET YOU AT ERRA'}</p><h2>{ro?'Locul tău la masă':'Your place at the table'}<br/><em>{ro?'te așteaptă.':'is waiting.'}</em></h2><a class="button" href={routes[lang].contact}>{t.reserve} <span aria-hidden="true">↗</span></a></div><div class="visit-details"><p class="eyebrow">BUCUREȘTI</p><h3>{address}</h3><a class="text-link" href={maps} target="_blank" rel="noopener noreferrer">{t.directions} <span aria-hidden="true">↗</span></a><hr/><p>{t.hours}</p><a class="phone-link" href={phoneHref}>{phone} <span aria-hidden="true">↗</span></a></div></section>
+<section class="featured-section section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{ro ? '02 / DIN MENIUL NOSTRU' : '02 / FROM OUR MENU'}</p>
+        <h2>{ro ? 'Câteva motive să rămâi.' : 'A few reasons to stay.'}</h2>
+      </div>
+      <a class="text-link" href={routes[lang].menu}>
+        {t.fullMenu}{' '}
+        <span aria-hidden="true">
+          <Arrow />
+        </span>
+      </a>
+    </div>
+    <p class="archive-note">{t.menuCaveat}</p>
+    <div class="featured-grid">
+      {featured.map((item, index) => (
+        <article class="featured-card">
+          <div class="dish-symbol" aria-hidden="true">
+            {index === 0 ? '◉' : index === 1 ? '≋' : '◒'}
+          </div>
+          <div class="dish-category">
+            <span>
+              {index === 0
+                ? 'PIZZA'
+                : index === 1
+                  ? ro
+                    ? 'PASTE'
+                    : 'PASTA'
+                  : ro
+                    ? 'DESERT'
+                    : 'DESSERT'}
+            </span>
+            <span>0{index + 1}</span>
+          </div>
+          <h3>{ro ? item.name_ro : item.name_en}</h3>
+          <p>
+            {(ro ? item.description_ro : item.description_en) ||
+              (ro ? 'Un final dulce, în stilul nostru.' : 'A sweet ending, our way.')}
+          </p>
+          <div class="dish-card-bottom">
+            <span>{item.price} lei</span>
+            <a
+              href={`${routes[lang].menu}#${item.category}`}
+              aria-label={`${ro ? 'Vezi' : 'View'} ${ro ? item.name_ro : item.name_en}`}
+            >
+              <span aria-hidden="true">
+                <Arrow />
+              </span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="section container visit-teaser">
+  <div>
+    <p class="eyebrow">{ro ? '03 / NE VEDEM LA ERRA' : '03 / MEET YOU AT ERRA'}</p>
+    <h2>
+      {ro ? 'Locul tău la masă' : 'Your place at the table'}
+      <br />
+      <em>{ro ? 'te așteaptă.' : 'is waiting.'}</em>
+    </h2>
+    <a class="button" href={routes[lang].contact}>
+      {t.reserve}{' '}
+      <span aria-hidden="true">
+        <Arrow />
+      </span>
+    </a>
+  </div>
+  <div class="visit-details">
+    <p class="eyebrow">BUCUREȘTI</p>
+    <h3>{address}</h3>
+    <a class="text-link" href={maps} target="_blank" rel="noopener noreferrer">
+      {t.directions}{' '}
+      <span aria-hidden="true">
+        <Arrow />
+      </span>
+    </a>
+    <hr />
+    <p>{t.hours}</p>
+    <a class="phone-link" href={phoneHref}>
+      {phone}{' '}
+      <span aria-hidden="true">
+        <Arrow />
+      </span>
+    </a>
+  </div>
+</section>

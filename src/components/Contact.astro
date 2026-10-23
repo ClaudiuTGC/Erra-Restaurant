@@ -1,24 +1,201 @@
 ---
-import {copy, address, phone, phoneHref, maps, type Lang} from '../site';
-const {lang}=Astro.props as {lang:Lang};const ro=lang==='ro';const t=copy[lang];
-const endpoint=import.meta.env.PUBLIC_RESERVATION_ENDPOINT || '';
-const configured=/^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(endpoint);
+import Arrow from './Arrow.astro';
+import { copy, address, phone, phoneHref, maps, type Lang } from '../site';
+const { lang } = Astro.props as { lang: Lang };
+const ro = lang === 'ro';
+const t = copy[lang];
+const endpoint = import.meta.env.PUBLIC_RESERVATION_ENDPOINT || '';
+const configured = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(endpoint);
 ---
-<section class="container page-intro"><p class="eyebrow">{ro?'NE VEDEM LA ERRA':'MEET YOU AT ERRA'}</p><h1>{ro?'Hai să stăm':'Let’s sit down'}<br/><em>{ro?'la masă.':'together.'}</em></h1></section>
-<section class="container contact-grid"><div class="contact-info"><p class="eyebrow">{ro?'UNDE NE GĂSEȘTI':'WHERE TO FIND US'}</p><h2>{ro?'Un colț de București.':'A corner of Bucharest.'}</h2><div class="info-block"><h3>{ro?'Adresa':'Address'}</h3><p>{address}</p><a href={maps} class="text-link" target="_blank" rel="noopener noreferrer">{t.directions} ↗</a></div><div class="info-block"><h3>{ro?'Telefon':'Phone'}</h3><a class="phone-link" href={phoneHref}>{phone} ↗</a></div><div class="info-block"><h3>{ro?'Program':'Opening hours'}</h3><p>{t.hours}</p><p class="small">{ro?'Programul săptămânal nu este încă verificat.':'Our weekly opening hours have not yet been verified.'}</p></div><div class="map-placeholder" data-map><span aria-hidden="true">↗</span><h3>Erra Restaurant</h3><p>București · Nottara 13</p><button class="button button-light" id="load-map" type="button" data-title={ro?'Harta locației Erra Restaurant':'Erra Restaurant location map'}>{ro?'Încarcă harta Google':'Load Google map'}</button><small>{ro?'Google primește adresa IP când încarci harta.':'Google receives your IP address when you load the map.'}</small></div></div>
-<div class="reservation-panel"><p class="eyebrow">{ro?'UN LOC PENTRU TINE':'A PLACE FOR YOU'}</p><h2>{t.reserve}</h2><p>{ro?'Trimite o solicitare. Rezervarea este valabilă doar după confirmarea telefonică a restaurantului.':'Send a request. Your booking is valid only after the restaurant confirms it by phone.'}</p>
-{!configured&&<p class="notice">{ro?'Solicitările online nu sunt încă activate. Pentru rezervare, sună la':'Online requests are not yet enabled. To book, call'} <a href={phoneHref}>{phone}</a>.</p>}
-<form id="reservation-form" data-lang={lang} data-endpoint={configured?endpoint:''}>
-<div class="form-field"><label for="guest-name">{ro?'Numele tău':'Your name'} <span aria-hidden="true">*</span></label><input id="guest-name" name="name" autocomplete="name" required minlength="2" maxlength="100" placeholder={ro?'Nume și prenume':'Full name'}/></div>
-<div class="form-field"><label for="guest-phone">{ro?'Telefon':'Phone'} <span aria-hidden="true">*</span></label><input id="guest-phone" type="tel" name="phone" autocomplete="tel" required pattern="[+0-9() .\-]{7,25}" maxlength="25" placeholder="07xx xxx xxx" aria-describedby="phone-help"/><small id="phone-help">{ro?'Te contactăm pentru confirmare.':'We will call you to confirm.'}</small></div>
-<div class="form-row"><div class="form-field"><label for="booking-date">{ro?'Data':'Date'} <span aria-hidden="true">*</span></label><input id="booking-date" name="date" type="date" required /></div><div class="form-field"><label for="booking-time">{ro?'Ora dorită':'Preferred time'} <span aria-hidden="true">*</span></label><input id="booking-time" name="time" type="time" required step="900" /></div></div>
-<div class="form-field"><label for="guest-count">{ro?'Număr de persoane':'Number of guests'} <span aria-hidden="true">*</span></label><select id="guest-count" name="guests" required><option value="">{ro?'Alege numărul de persoane':'Select party size'}</option>{Array.from({length:12},(_,i)=><option value={i+1}>{i+1} {i===0?(ro?'persoană':'guest'):(ro?'persoane':'guests')}</option>)}</select></div>
-<div class="form-field"><label for="booking-notes">{ro?'Ce ar fi bine să știm?':'Anything we should know?'} <span class="optional">({ro?'opțional':'optional'})</span></label><textarea id="booking-notes" name="notes" rows="3" maxlength="1000" placeholder={ro?'O ocazie specială, preferințe…':'A special occasion, preferences…'}></textarea></div>
-<label class="consent"><input type="checkbox" name="consent" required/><span>{ro?'Sunt de acord ca numele și telefonul meu să fie folosite pentru această solicitare și transmise prin Formspree. Nu voi include informații sensibile în mesaj.':'I agree to my name and phone being used for this request and sent through Formspree. I will not include sensitive information in the message.'}</span></label>
-<input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave empty" />
-<input type="hidden" name="_subject" value="Erra Restaurant — reservation request" />
-<button type="submit" class="button submit-button" data-idle={ro?'Trimite solicitarea':'Send request'} data-loading={ro?'Se trimite…':'Sending…'}>{ro?'Trimite solicitarea':'Send request'} <span aria-hidden="true">↗</span></button>
-<p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></p><p class="small">{ro?'* Câmpuri obligatorii. Pentru grupuri mai mari de 12 persoane, te rugăm să ne suni.':'* Required fields. Please call us for groups larger than 12.'}</p>
-<noscript><p class="notice">{ro?'Activează JavaScript pentru solicitări online sau sună-ne.':'Enable JavaScript for online requests, or call us.'}</p></noscript>
-</form></div></section>
+
+<section class="container page-intro">
+  <p class="eyebrow">{ro ? 'NE VEDEM LA ERRA' : 'MEET YOU AT ERRA'}</p>
+  <h1>
+    {ro ? 'Hai să stăm' : 'Let’s sit down'}
+    <br />
+    <em>{ro ? 'la masă.' : 'together.'}</em>
+  </h1>
+</section>
+<section class="container contact-grid">
+  <div class="contact-info">
+    <p class="eyebrow">{ro ? 'UNDE NE GĂSEȘTI' : 'WHERE TO FIND US'}</p>
+    <h2>{ro ? 'Un colț de București.' : 'A corner of Bucharest.'}</h2>
+    <div class="info-block">
+      <h3>{ro ? 'Adresa' : 'Address'}</h3>
+      <p>{address}</p>
+      <a href={maps} class="text-link" target="_blank" rel="noopener noreferrer">
+        {t.directions} <Arrow />
+      </a>
+    </div>
+    <div class="info-block">
+      <h3>{ro ? 'Telefon' : 'Phone'}</h3>
+      <a class="phone-link" href={phoneHref}>
+        {phone} <Arrow />
+      </a>
+    </div>
+    <div class="info-block">
+      <h3>{ro ? 'Program' : 'Opening hours'}</h3>
+      <p>{t.hours}</p>
+      <p class="small">
+        {ro
+          ? 'Programul săptămânal nu este încă verificat.'
+          : 'Our weekly opening hours have not yet been verified.'}
+      </p>
+    </div>
+    <div class="map-placeholder" data-map>
+      <span aria-hidden="true">
+        <Arrow />
+      </span>
+      <h3>Erra Restaurant</h3>
+      <p>București · Nottara 13</p>
+      <button
+        class="button button-light"
+        id="load-map"
+        type="button"
+        data-title={ro ? 'Harta locației Erra Restaurant' : 'Erra Restaurant location map'}
+      >
+        {ro ? 'Încarcă harta Google' : 'Load Google map'}
+      </button>
+      <small>
+        {ro
+          ? 'Google primește adresa IP când încarci harta.'
+          : 'Google receives your IP address when you load the map.'}
+      </small>
+    </div>
+  </div>
+  <div class="reservation-panel">
+    <p class="eyebrow">{ro ? 'UN LOC PENTRU TINE' : 'A PLACE FOR YOU'}</p>
+    <h2>{t.reserve}</h2>
+    <p>
+      {ro
+        ? 'Trimite o solicitare. Rezervarea este valabilă doar după confirmarea telefonică a restaurantului.'
+        : 'Send a request. Your booking is valid only after the restaurant confirms it by phone.'}
+    </p>
+    {!configured && (
+      <p class="notice">
+        {ro
+          ? 'Solicitările online nu sunt încă activate. Pentru rezervare, sună la'
+          : 'Online requests are not yet enabled. To book, call'}{' '}
+        <a href={phoneHref}>{phone}</a>.
+      </p>
+    )}
+    <form id="reservation-form" data-lang={lang} data-endpoint={configured ? endpoint : ''}>
+      <div class="form-field">
+        <label for="guest-name">
+          {ro ? 'Numele tău' : 'Your name'} <span aria-hidden="true">*</span>
+        </label>
+        <input
+          id="guest-name"
+          name="name"
+          autocomplete="name"
+          required
+          minlength="2"
+          maxlength="100"
+          placeholder={ro ? 'Nume și prenume' : 'Full name'}
+        />
+      </div>
+      <div class="form-field">
+        <label for="guest-phone">
+          {ro ? 'Telefon' : 'Phone'} <span aria-hidden="true">*</span>
+        </label>
+        <input
+          id="guest-phone"
+          type="tel"
+          name="phone"
+          autocomplete="tel"
+          required
+          pattern={String.raw`[+0-9 .\(\)\-]{7,25}`}
+          maxlength="25"
+          placeholder="07xx xxx xxx"
+          aria-describedby="phone-help"
+        />
+        <small id="phone-help">
+          {ro ? 'Te contactăm pentru confirmare.' : 'We will call you to confirm.'}
+        </small>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="booking-date">
+            {ro ? 'Data' : 'Date'} <span aria-hidden="true">*</span>
+          </label>
+          <input id="booking-date" name="date" type="date" required />
+        </div>
+        <div class="form-field">
+          <label for="booking-time">
+            {ro ? 'Ora dorită' : 'Preferred time'} <span aria-hidden="true">*</span>
+          </label>
+          <input id="booking-time" name="time" type="time" required step="900" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="guest-count">
+          {ro ? 'Număr de persoane' : 'Number of guests'} <span aria-hidden="true">*</span>
+        </label>
+        <select id="guest-count" name="guests" required>
+          <option value="">{ro ? 'Alege numărul de persoane' : 'Select party size'}</option>
+          {Array.from({ length: 12 }, (_, i) => (
+            <option value={i + 1}>
+              {i + 1} {i === 0 ? (ro ? 'persoană' : 'guest') : ro ? 'persoane' : 'guests'}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="booking-notes">
+          {ro ? 'Ce ar fi bine să știm?' : 'Anything we should know?'}{' '}
+          <span class="optional">({ro ? 'opțional' : 'optional'})</span>
+        </label>
+        <textarea
+          id="booking-notes"
+          name="notes"
+          rows="3"
+          maxlength="1000"
+          placeholder={ro ? 'O ocazie specială, preferințe…' : 'A special occasion, preferences…'}
+        ></textarea>
+      </div>
+      <label class="consent">
+        <input type="checkbox" name="consent" required />
+        <span>
+          {ro
+            ? 'Sunt de acord ca numele și telefonul meu să fie folosite pentru această solicitare și transmise prin Formspree. Nu voi include informații sensibile în mesaj.'
+            : 'I agree to my name and phone being used for this request and sent through Formspree. I will not include sensitive information in the message.'}
+        </span>
+      </label>
+      <input
+        type="text"
+        name="_gotcha"
+        class="honeypot"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        aria-label="Leave empty"
+      />
+      <input type="hidden" name="_subject" value="Erra Restaurant — reservation request" />
+      <button
+        type="submit"
+        class="button submit-button"
+        data-idle={ro ? 'Trimite solicitarea' : 'Send request'}
+        data-loading={ro ? 'Se trimite…' : 'Sending…'}
+      >
+        {ro ? 'Trimite solicitarea' : 'Send request'}{' '}
+        <span aria-hidden="true">
+          <Arrow />
+        </span>
+      </button>
+      <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+      <p class="small">
+        {ro
+          ? '* Câmpuri obligatorii. Pentru grupuri mai mari de 12 persoane, te rugăm să ne suni.'
+          : '* Required fields. Please call us for groups larger than 12.'}
+      </p>
+      <noscript>
+        <p class="notice">
+          {ro
+            ? 'Activează JavaScript pentru solicitări online sau sună-ne.'
+            : 'Enable JavaScript for online requests, or call us.'}
+        </p>
+      </noscript>
+    </form>
+  </div>
+</section>
 <script src="../scripts/reservation.ts"></script>
