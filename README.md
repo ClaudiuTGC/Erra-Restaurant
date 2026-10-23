@@ -47,12 +47,12 @@ The locale switch preserves the current page. There is also a custom 404, sitema
 
 Copy `.env.example` to `.env` and set:
 
-- `SITE_URL`: the real public HTTPS origin. The default `https://erra.example` is a placeholder, not a deployed website. It controls canonical URLs, the sitemap, social metadata, and JSON-LD.
+- `SITE_URL`: an optional explicit public HTTPS origin. On Vercel, the build otherwise uses `VERCEL_PROJECT_PRODUCTION_URL` (or `VERCEL_URL` as a fallback) so canonical URLs, sitemap, social metadata and JSON-LD match the actual deployment. Outside Vercel, set this value before deployment; the local fallback `https://erra.example` is a placeholder.
 - `PUBLIC_RESERVATION_ENDPOINT`: optional public Formspree form endpoint such as `https://formspree.io/f/YOUR_FORM_ID`. This is a public destination, not a secret. Only that HTTPS endpoint format is accepted.
 
 Environment variables are embedded at build time. Rebuild after changing them.
 
-Vercel: import this GitHub repository, set the variables, and deploy with the included Astro configuration. CLI deployment: `npx vercel --prod` after authenticating and configuring the project.
+Vercel: import this GitHub repository, configure any optional variables, and deploy with the included Astro configuration. The free `vercel.app` domain does not require a domain purchase. Vercel Hobby is limited to personal, non-commercial use; a commercial restaurant site requires an appropriate existing plan. No paid plan or domain purchase is authorised by the configuration. CLI deployment: `npx vercel --prod` after authenticating and configuring the project.
 
 Netlify: import this repository and set the variables. `netlify.toml` sets `npm run build` and `dist`. CLI deployment: `npx netlify deploy --build --prod` after linking and authenticating.
 

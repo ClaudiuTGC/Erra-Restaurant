@@ -7,3 +7,6 @@ dist/
 playwright-report/
 test-results/
 artifacts/
+
+# Vercel project linkage is local to the authenticated deployment session.
+.vercel/
