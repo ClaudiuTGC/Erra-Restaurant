@@ -1,0 +1,6 @@
+{
+  "name": "erra-restaurant", "version": "1.0.0", "private": true, "type": "module",
+  "scripts": {"dev": "astro dev --host 0.0.0.0", "build": "astro build", "preview": "astro preview --host 0.0.0.0", "check": "astro check", "test": "playwright test", "test:report": "playwright show-report"},
+  "dependencies": {"astro": "^5.16.0", "@fontsource/cormorant-garamond": "^5.2.0", "@fontsource/dm-sans": "^5.2.0", "tailwindcss": "^4.1.0", "@tailwindcss/vite": "^4.1.0"},
+  "devDependencies": {"@astrojs/check": "^0.9.0", "typescript": "^5.9.0", "@playwright/test": "^1.56.0", "@axe-core/playwright": "^4.10.0", "lighthouse": "^13.0.0"}
+}

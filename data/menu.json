@@ -1,0 +1,344 @@
+[
+  {
+    "category": "pizza",
+    "name_ro": "Prosciutto e Funghi",
+    "name_en": "Prosciutto & mushroom",
+    "description_ro": "Sos de roșii, mozzarella, ciuperci, șuncă",
+    "description_en": "Tomato sauce, mozzarella, mushrooms, ham",
+    "price": 30,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Quattro Stagioni",
+    "name_en": "Four seasons",
+    "description_ro": "Sos de roșii, mozzarella, șuncă, ciuperci, salam",
+    "description_en": "Tomato sauce, mozzarella, ham, mushrooms, salami",
+    "price": 37,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Prosciutto Crudo e Rucola",
+    "name_en": "Prosciutto & rocket",
+    "description_ro": "Sos de roșii, mozzarella, prosciutto crudo, roșii cherry, parmezan scalie",
+    "description_en": "Tomato sauce, mozzarella, cured prosciutto, cherry tomatoes, Parmesan shavings",
+    "price": 37,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Capricciosa",
+    "name_en": "Capricciosa",
+    "description_ro": "Sos de roșii, mozzarella, șuncă, ciuperci, ardei gras, porumb",
+    "description_en": "Tomato sauce, mozzarella, ham, mushrooms, bell pepper, sweetcorn",
+    "price": 30,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Parmigiana e Salami",
+    "name_en": "Parmigiana & salami",
+    "description_ro": "Mozzarella, parmezan, salam, peperoncino",
+    "description_en": "Mozzarella, Parmesan, salami, peperoncino",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Quattro Formaggi",
+    "name_en": "Four cheeses",
+    "description_ro": "Sos panna, mozzarella, gorgonzola, cașcaval afumat, parmezan",
+    "description_en": "Cream sauce, mozzarella, Gorgonzola, smoked cheese, Parmesan",
+    "price": 34,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Del Paesano",
+    "name_en": "Del Paesano",
+    "description_ro": "Sos de roșii, mozzarella, salam, cârnați, usturoi, cartofi prăjiți",
+    "description_en": "Tomato sauce, mozzarella, salami, sausages, garlic, fries",
+    "price": 35,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Diavola",
+    "name_en": "Diavola",
+    "description_ro": "Sos de roșii, mozzarella, salam, peperoncino",
+    "description_en": "Tomato sauce, mozzarella, salami, peperoncino",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Erra",
+    "name_en": "Erra",
+    "description_ro": "Sos de roșii, mozzarella, fâșii din carne de porc coapte, rucola și jalapeño",
+    "description_en": "Tomato sauce, mozzarella, roasted pork strips, rocket and jalapeño",
+    "price": 38,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Prosciutto Crudo e Funghi",
+    "name_en": "Prosciutto & mushroom",
+    "description_ro": "Sos de roșii, mozzarella, ciuperci, prosciutto crudo",
+    "description_en": "Tomato sauce, mozzarella, mushrooms, cured prosciutto",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Nordique",
+    "name_en": "Nordique",
+    "description_ro": "Sos panna, mozzarella, somon fume, ceapă roșie, capere",
+    "description_en": "Cream sauce, mozzarella, smoked salmon, red onion, capers",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "Primavera",
+    "name_en": "Primavera",
+    "description_ro": "Sos de roșii, mozzarella, ardei gras, porumb, capere",
+    "description_en": "Tomato sauce, mozzarella, bell pepper, sweetcorn, capers",
+    "price": 35,
+    "tags": []
+  },
+  {
+    "category": "pizza",
+    "name_ro": "La Montagna",
+    "name_en": "La Montagna",
+    "description_ro": "Sos de roșii, mozzarella, ciuperci pleurotus, gorgonzola",
+    "description_en": "Tomato sauce, mozzarella, oyster mushrooms, Gorgonzola",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Pui sous vide",
+    "name_en": "Sous vide chicken",
+    "description_ro": "",
+    "description_en": "",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Coaste porc",
+    "name_en": "Pork ribs",
+    "description_ro": "Cu cartofi copți și salată coleslaw",
+    "description_en": "With baked potatoes and coleslaw",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Ciolan porc",
+    "name_en": "Pork knuckle",
+    "description_ro": "Cu cartofi și salată coleslaw",
+    "description_en": "With potatoes and coleslaw",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Shepards Pie",
+    "name_en": "Shepherd’s pie",
+    "description_ro": "Carne berbecuț la cuptor cu legume",
+    "description_en": "Oven-baked lamb with vegetables",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Mușchi de vită gremolata",
+    "name_en": "Beef tenderloin gremolata",
+    "description_ro": "Cu cartofi copți și ciuperci gratin",
+    "description_en": "With baked potatoes and gratin mushrooms",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Burger vită",
+    "name_en": "Beef burger",
+    "description_ro": "Cartofi cu trufe și salată coleslaw",
+    "description_en": "Truffle potatoes and coleslaw",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Piept de rață caramelizat",
+    "name_en": "Caramelised duck breast",
+    "description_ro": "Cu piure de cartofi dulci și sos Madeira",
+    "description_en": "With sweet potato purée and Madeira sauce",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "File doradă, creveți Black Tiger",
+    "name_en": "Sea bream fillet & Black Tiger prawns",
+    "description_ro": "Avocado mix salată și sos imperial",
+    "description_en": "Avocado salad mix and imperial sauce",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "main",
+    "name_ro": "Creveți Black Tiger la cărbuni",
+    "name_en": "Charcoal-grilled Black Tiger prawns",
+    "description_ro": "Cu rucola și sos Romesco",
+    "description_en": "With rocket and Romesco sauce",
+    "price": null,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Crab Meat & Linguine Calamari",
+    "name_en": "Crab Meat & Linguine Calamari",
+    "description_ro": "Calamari, apio, semințe de fenel, lămâie",
+    "description_en": "Calamari, celery, fennel seeds, lemon",
+    "price": 36,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Tagliatele Erra",
+    "name_en": "Erra tagliatelle",
+    "description_ro": "Creveți, cherry, dovlecei, usturoi, ardei chilli, pătrunjel",
+    "description_en": "Prawns, cherry tomatoes, courgette, garlic, chilli, parsley",
+    "price": 39,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Farfalle with Bacon & Peas",
+    "name_en": "Farfalle with Bacon & Peas",
+    "description_ro": "Farfalle, bacon, mazăre, panna și usturoi",
+    "description_en": "Farfalle, bacon, peas, cream and garlic",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Tagliatele Salmon",
+    "name_en": "Salmon tagliatelle",
+    "description_ro": "Panna, somon, ceapă roșie, mărar, capere",
+    "description_en": "Cream, salmon, red onion, dill, capers",
+    "price": 36,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Tortellini al Forno",
+    "name_en": "Tortellini al Forno",
+    "description_ro": "Panna, mozzarella, șuncă, ciuperci, parmezan",
+    "description_en": "Cream, mozzarella, ham, mushrooms, Parmesan",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Carbonara",
+    "name_en": "Carbonara",
+    "description_ro": "Pancetta, ou, parmezan, panna",
+    "description_en": "Pancetta, egg, Parmesan, cream",
+    "price": 31,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Penne all Arabiatta",
+    "name_en": "Penne all Arabiatta",
+    "description_ro": "Sos de roșii, usturoi, peperoncino, parmezan",
+    "description_en": "Tomato sauce, garlic, peperoncino, Parmesan",
+    "price": 31,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Penne Quattro Formaggi",
+    "name_en": "Four-cheese penne",
+    "description_ro": "Panna, gorgonzola, cașcaval afumat, parmezan",
+    "description_en": "Cream, Gorgonzola, smoked cheese, Parmesan",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "pasta",
+    "name_ro": "Tagliatele Milaneze",
+    "name_en": "Milanese tagliatelle",
+    "description_ro": "Sos de roșii, bacon, șuncă, ciuperci, ceapă roșie, usturoi",
+    "description_en": "Tomato sauce, bacon, ham, mushrooms, red onion, garlic",
+    "price": 33,
+    "tags": []
+  },
+  {
+    "category": "focaccia",
+    "name_ro": "Oregano and Olive Oil",
+    "name_en": "Oregano and Olive Oil",
+    "description_ro": "",
+    "description_en": "",
+    "price": 11,
+    "tags": []
+  },
+  {
+    "category": "focaccia",
+    "name_ro": "Garlic, Parmesan and Olive Oil",
+    "name_en": "Garlic, Parmesan and Olive Oil",
+    "description_ro": "",
+    "description_en": "",
+    "price": 11,
+    "tags": []
+  },
+  {
+    "category": "focaccia",
+    "name_ro": "Garlic, Parsley and Olive Oil",
+    "name_en": "Garlic, Parsley and Olive Oil",
+    "description_ro": "",
+    "description_en": "",
+    "price": 11,
+    "tags": []
+  },
+  {
+    "category": "dessert",
+    "name_ro": "Tart Tatin",
+    "name_en": "Tarte Tatin",
+    "description_ro": "",
+    "description_en": "",
+    "price": 21,
+    "tags": []
+  },
+  {
+    "category": "dessert",
+    "name_ro": "Tiramisu My Way",
+    "name_en": "Tiramisu My Way",
+    "description_ro": "",
+    "description_en": "",
+    "price": 18,
+    "tags": []
+  },
+  {
+    "category": "dessert",
+    "name_ro": "Cheese Cake Ciocolată",
+    "name_en": "Chocolate cheesecake",
+    "description_ro": "",
+    "description_en": "",
+    "price": 21,
+    "tags": []
+  },
+  {
+    "category": "dessert",
+    "name_ro": "Pain Perdu",
+    "name_en": "Pain Perdu",
+    "description_ro": "",
+    "description_en": "",
+    "price": 21,
+    "tags": []
+  }
+]

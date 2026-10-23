@@ -1,0 +1,81 @@
+---
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-ext-500.css';
+import '@fontsource/cormorant-garamond/latin-500-italic.css';
+import '@fontsource/cormorant-garamond/latin-ext-500-italic.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-ext-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-ext-500.css';
+import '../styles/global.css';
+import menu from '../../data/menu.json';
+import { copy, routes, address, phone, phoneHref, type Lang, type Page } from '../site';
+interface Props { lang: Lang; page?: Page; title?: string; }
+const {lang, page = 'home', title} = Astro.props;
+const t = copy[lang];
+const base = Astro.site!;
+const canonical = new URL(Astro.url.pathname, base);
+const schema = {
+  '@context':'https://schema.org', '@type':'Restaurant', '@id': new URL('/#restaurant',base).href,
+  name:'Erra Restaurant', url:new URL('/',base).href, telephone:'+40734983984',
+  address:{'@type':'PostalAddress', streetAddress:'Strada Constantin C. Nottara 13', addressLocality:'București', addressCountry:'RO'},
+  servesCuisine:['Italian','Modern European'], image:new URL('/images/social.svg',base).href,
+  hasMenu:{'@type':'Menu', name:lang === 'ro' ? 'Meniu de arhivă, februarie 2020' : 'Archive menu, February 2020',
+    url:new URL(routes[lang].menu,base).href, description:t.menuCaveat,
+    hasMenuSection: ['pizza','pasta','main','focaccia','dessert'].map(category => ({'@type':'MenuSection',name:category,
+      hasMenuItem:menu.filter(item => item.category===category).map(item=>({'@type':'MenuItem', name:lang==='ro'?item.name_ro:item.name_en, description:lang==='ro'?item.description_ro:item.description_en}))}))
+  }
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4eb" /><meta name="description" content={t.description} />
+    <title>{title || t.titles[page]}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ro" href={new URL(routes.ro[page],base)} />
+    <link rel="alternate" hreflang="en" href={new URL(routes.en[page],base)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(routes.ro[page],base)} />
+    <meta property="og:type" content="website" /><meta property="og:site_name" content="Erra Restaurant" />
+    <meta property="og:title" content={title || t.titles[page]} /><meta property="og:description" content={t.description} />
+    <meta property="og:url" content={canonical} /><meta property="og:image" content={new URL('/images/social.svg',base)} />
+    <meta property="og:locale" content={lang==='ro'?'ro_RO':'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skip}</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href={routes[lang].home} class="wordmark" aria-label="Erra Restaurant">erra<span>.</span><small>RESTAURANT</small></a>
+        <nav class="desktop-nav" aria-label={t.navigation}>
+          {(['home','menu','about','contact'] as Page[]).map(key => <a href={routes[lang][key]} aria-current={page===key?'page':undefined}>{t[key]}</a>)}
+        </nav>
+        <div class="header-actions">
+          <a class="language-switch" href={routes[lang==='ro'?'en':'ro'][page]} lang={lang==='ro'?'en':'ro'} aria-label={lang==='ro'?'Switch to English':'Schimbă în română'}><span aria-hidden="true">{lang.toUpperCase()}</span><span class="language-divider" aria-hidden="true">/</span>{lang==='ro'?'EN':'RO'}</a>
+          <a class="button button-small header-reserve" href={routes[lang].contact}>{t.reserve} <span aria-hidden="true">↗</span></a>
+          <details class="mobile-nav">
+            <summary aria-label={t.open}><span></span><span></span></summary>
+            <nav aria-label={t.navigation}>{(['home','menu','about','contact'] as Page[]).map(key=><a href={routes[lang][key]} aria-current={page===key?'page':undefined}>{t[key]}</a>)}<a class="button" href={routes[lang].contact}>{t.reserve} ↗</a></nav>
+          </details>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><a class="wordmark" href={routes[lang].home} aria-label="Erra Restaurant">erra<span>.</span></a><p class="footer-tagline">{t.footerLine}</p><span class="eyebrow">BUCUREȘTI, ROMÂNIA</span></div>
+        <div><h2 class="footer-heading">{t.visit}</h2><p>{address}</p><a href={phoneHref}>{phone}</a><p class="small">{t.hours}</p></div>
+        <nav aria-label={lang==='ro'?'Navigație subsol':'Footer navigation'}><h2 class="footer-heading">{t.explore}</h2><a href={routes[lang].menu}>{t.menu}</a><a href={routes[lang].about}>{t.about}</a><a href={routes[lang].contact}>{t.contact}</a></nav>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Erra Restaurant</span><span>{lang==='ro'?'Cu gust. Cu timp. Cu drag.':'Good food. Time well spent.'}</span><a href="#main">{lang==='ro'?'Înapoi sus ↑':'Back to top ↑'}</a></div>
+    </footer>
+    <script>
+      document.addEventListener('keydown', event => {
+        if(event.key==='Escape') document.querySelectorAll<HTMLDetailsElement>('details[open]').forEach(el=>{el.open=false;el.querySelector('summary')?.focus();});
+      });
+    </script>
+  </body>
+</html>
