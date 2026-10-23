@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Home from '../components/Home.astro';
+import Menu from '../components/Menu.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import {routes, type Lang, type Page} from '../site';
+export function getStaticPaths(){
+ return (['ro','en'] as Lang[]).flatMap(lang=>(['home','menu','about','contact'] as Page[]).map(page=>({params:{path:routes[lang][page].slice(1,-1)||undefined},props:{lang,page}})));
+}
+const {lang,page}=Astro.props;
+---
+<Layout lang={lang} page={page}>
+{page==='home'&&<Home lang={lang}/>}
+{page==='menu'&&<Menu lang={lang}/>}
+{page==='about'&&<About lang={lang}/>}
+{page==='contact'&&<Contact lang={lang}/>}
+</Layout>
