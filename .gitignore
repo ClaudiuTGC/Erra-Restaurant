@@ -10,3 +10,6 @@ artifacts/
 
 # Vercel project linkage is local to the authenticated deployment session.
 .vercel/
+
+# Local Netlify project linkage and generated deploy metadata.
+.netlify/

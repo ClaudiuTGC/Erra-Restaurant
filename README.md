@@ -47,7 +47,7 @@ The locale switch preserves the current page. There is also a custom 404, sitema
 
 Copy `.env.example` to `.env` and set:
 
-- `SITE_URL`: an optional explicit public HTTPS origin. On Vercel, the build otherwise uses `VERCEL_PROJECT_PRODUCTION_URL` (or `VERCEL_URL` as a fallback) so canonical URLs, sitemap, social metadata and JSON-LD match the actual deployment. Outside Vercel, set this value before deployment; the local fallback `https://erra.example` is a placeholder.
+- `SITE_URL`: an optional explicit public HTTPS origin. Vercel builds otherwise use `VERCEL_PROJECT_PRODUCTION_URL` (or `VERCEL_URL`); Netlify builds use its `URL` variable when `NETLIFY` is set. These values keep canonical URLs, sitemap, social metadata and JSON-LD aligned with the deployment. For other hosts or a local build intended for upload, set `SITE_URL` explicitly. The local fallback `https://erra.example` is a placeholder.
 - `PUBLIC_RESERVATION_ENDPOINT`: optional public Formspree form endpoint such as `https://formspree.io/f/YOUR_FORM_ID`. This is a public destination, not a secret. Only that HTTPS endpoint format is accepted.
 
 Environment variables are embedded at build time. Rebuild after changing them.
@@ -126,7 +126,7 @@ Lighthouse mobile commands and measured results are recorded in `docs/validation
 - **Hours:** the screenshot says “closes 10 pm” at one moment, not a weekly schedule. No weekly hours are inferred. Pages ask guests to call.
 - **Menu:** 38 confidently readable dishes, including 9 without a price. Unreadable appetizers and cropped salad names are omitted. See the full review ledger.
 - **Photos:** editorial illustrations await licensed restaurant/food photography.
-- **Domain:** replace the placeholder `SITE_URL` before deployment.
+- **Domain:** use the automatic Vercel/Netlify production hostname or set an explicit `SITE_URL` before deploying on another host.
 - **Reservations/privacy:** configure and verify Formspree and approve privacy wording before collecting real bookings.
 - **GitHub:** feature branches and commits are maintained. PR creation requires API access; see the final delivery status in `docs/validation.md`. Git transport access does not imply GitHub API access.
 
