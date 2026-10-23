@@ -1,5 +1,7 @@
 # Erra Restaurant
 
+Live site: **https://errarestaurant.netlify.app** (Netlify Free, published 23 October 2026).
+
 A bilingual, responsive restaurant website for Erra in Bucharest. Romanian is the default; every primary page has an English counterpart. Built with Astro, TypeScript, and Tailwind CSS, with a shared CSS design system and self-hosted Cormorant Garamond / DM Sans fonts.
 
 ## Run locally
@@ -58,7 +60,7 @@ Netlify: import this repository and set the variables. `netlify.toml` sets `npm 
 
 Any static host can serve `dist`; configure unknown paths to serve `404.html` with a 404 status. Do not rewrite every path to the home page. HTTP security/cache headers are included for Netlify, and basic security headers for Vercel.
 
-No public deployment has been performed in this session. Do not launch commercially until the checklist below is complete.
+The static website is published on Netlify at https://errarestaurant.netlify.app. Online reservation delivery is not configured; click-to-call is available and the site clearly states that online requests are inactive. Confirm current hours, menu details and photography before advertising the site as a current restaurant offer. See `docs/deployment.md` for production verification and update instructions.
 
 ## Reservations
 

@@ -1,0 +1,59 @@
+{
+  "origin": "https://errarestaurant.netlify.app",
+  "deployedCode": "6854ba6",
+  "deployId": "6adbb681810ff8c4f8443c46",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Erra Restaurant · Un loc bun, o masă și mai bună"
+    },
+    {
+      "route": "/meniu/",
+      "status": 200,
+      "title": "Meniu · Erra Restaurant"
+    },
+    {
+      "route": "/despre/",
+      "status": 200,
+      "title": "Povestea noastră · Erra Restaurant"
+    },
+    {
+      "route": "/contact/",
+      "status": 200,
+      "title": "Contact și rezervări · Erra Restaurant"
+    },
+    {
+      "route": "/en/",
+      "status": 200,
+      "title": "Erra Restaurant · Good food, good company"
+    },
+    {
+      "route": "/en/menu/",
+      "status": 200,
+      "title": "Menu · Erra Restaurant"
+    },
+    {
+      "route": "/en/about/",
+      "status": 200,
+      "title": "Our story · Erra Restaurant"
+    },
+    {
+      "route": "/en/contact/",
+      "status": 200,
+      "title": "Contact & reservations · Erra Restaurant"
+    }
+  ],
+  "menuItems": 38,
+  "searchMatches": 2,
+  "languageSwitch": true,
+  "mobileNavigation": true,
+  "custom404": true,
+  "sitemap": true,
+  "robots": true,
+  "https": true,
+  "tlsVerification": "enabled through Node client with environment CA bundle",
+  "consoleErrors": [],
+  "reservations": "Phone only; online endpoint not configured",
+  "checkedAt": "2026-10-23T19:37:42.891Z"
+}
